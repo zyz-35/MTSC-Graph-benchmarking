@@ -1,0 +1,66 @@
+DATASET:
+  CLASS: UEADataset
+  PARAM:
+    name: FingerMovements
+    path: ~/data/UEA
+  bands:
+  - !!python/tuple
+    - 1
+    - 4
+  - !!python/tuple
+    - 4
+    - 8
+  - !!python/tuple
+    - 8
+    - 14
+  - !!python/tuple
+    - 14
+    - 31
+  - !!python/tuple
+    - 31
+    - 50
+  fs: 100
+EXPERIMENT:
+  BATCH_SIZE: 64
+  EPOCHS: 200
+  OPTIMIZER:
+    CLASS: SGD
+    PARAM:
+      lr: 0.001
+      momentum: 0.9
+      weight_decay: 0.0005
+  SCHEDULER:
+    CLASS: ReduceLROnPlateau
+    PARAM:
+      cooldown: 0
+      eps: 8.0e-09
+      factor: 0.5
+      min_lr: 1.0e-06
+      mode: min
+      patience: 10
+      threshold: 4.0e-05
+      threshold_mode: rel
+      verbose: false
+GRAPH:
+  ADJ_MATRIX: complete
+  NODE: raw
+MODEL:
+  CLASS: MEGAT
+  PARAM:
+    dropout: 0.5
+    graphlearn: false
+    hidden_dim: 128
+    in_dim: 50
+    len: 50
+    mlp_dim: 128
+    n_classes: 2
+    n_layers: 1
+    num_heads: 1
+    readout: mean
+    residual: true
+    t_embedding: 0
+    thred: 0.8
+SYSTEM:
+  GPU: 7
+  NUM_WORKERS: 10
+  SEED: 42
