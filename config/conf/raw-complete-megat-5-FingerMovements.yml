@@ -2,7 +2,7 @@ DATASET:
   CLASS: UEADataset
   PARAM:
     name: FingerMovements
-    path: ~/data/UEA
+    path: ./dataset # replace with your dataset location
   bands:
   - !!python/tuple
     - 1
